@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description"
+    content="Portfólio de Vinícius Zanotti, desenvolvedor front-end focado em interfaces modernas e interativas." />
+
+  <title>Vinícius Zanotti | Desenvolvedor Full-Stack</title>
+
+  <!-- Fonte futurista pra vibe neon -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+
+  <!-- Estilos principais -->
+  <link rel="stylesheet" href="./src/styles/index.css" />
+</head>
+
+<body>
+  <main>
+    <!-- DIV 1 - Hero -->
+    <section class="hero-box">
+      <h1>Vinícius Zanotti</h1>
+      <p>Desenvolvedor Full-Stack apaixonado por soluções criativas e eficientes</p>
+    </section>
+
+    <!-- Menu Principal -->
+    <section class="menu-row">
+      <div class="menu-box menu-sobre">
+        <h2>Sobre Mim</h2>
+        <p>Quem sou, trajetória e motivações</p>
+      </div>
+      <div class="menu-box menu-projetos">
+        <h2>Projetos</h2>
+        <p>Veja os trabalhos que desenvolvi</p>
+      </div>
+      <div class="menu-box menu-formacao">
+        <h2>Formação</h2>
+        <p>Formação acadêmica e especializações</p>
+      </div>
+      <div class="menu-box menu-skills">
+        <h2>Skills</h2>
+        <p>Minhas ferramentas, stacks e linguagens</p>
+      </div>
+      <div class="menu-box menu-contato">
+        <h2>Contato</h2>
+        <p>Vamos conversar e criar algo juntos</p>
+      </div>
+    </section>
+
+    <!-- Rodapé com linguagens digitadas -->
+    <div class="typing-footer">
+      <p class="typing-langs"></p>
+    </div>
+
+    <!-- Botões sociais fixos -->
+    <div class="social-fixed">
+      <a href="http://wa.me/5541998258938" target="_blank">
+        <img src="./src/assets/icons/whatsapp.png" alt="WhatsApp">
+      </a>
+      <a href="https://www.linkedin.com/in/vinicius-zanotti/" target="_blank">
+        <img src="./src/assets/icons/linkedin.png" alt="LinkedIn">
+      </a>
+      <a href="https://github.com/vinizanotti89" target="_blank">
+        <img src="./src/assets/icons/github.png" alt="GitHub">
+      </a>
+    </div>
+  </main>
+
+  <div id="root"></div>
+  <div id="pong-root"></div>
+
+  <!-- React / Vite principal -->
+  <script type="module" src="./src/main.jsx"></script>
+
+  <!-- Script complementar com seus efeitos visuais, animações, etc -->
+  <script type="module" src="./src/scripts/menuEffects.js"></script>
+
+  <!-- Script para o efeito de digitação -->
+  <script type="module" src="/src/scripts/typingEffect.js"></script>
+</body>
+
+</html>

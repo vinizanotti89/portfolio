@@ -1,0 +1,316 @@
+@import './assets/colors.css';
+
+:root {
+  --start-angle: 0deg;
+}
+
+body {
+  margin: 0;
+  background-image: url('./assets/img/Fundo-2.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--neon-white);
+  overflow: hidden;
+  /* Impede scroll na tela inicial */
+}
+
+/* Nave Maluca da minha cabeça */
+@keyframes warpIn {
+  0% {
+    transform: scale(1.1) translateY(-10px);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.95) translateY(-20px);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(0) translateY(-100px);
+    opacity: 0;
+  }
+}
+
+.menu-box.clicked {
+  animation: warpIn 0.6s forwards ease-in-out;
+}
+
+
+.menu-box {
+  position: relative;
+  border-radius: 20px;
+  border: 2px solid currentColor;
+  overflow: hidden;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: var(--neon-white);
+  width: 240px;
+  height: 340px;
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: transform 0.3s ease, box-shadow 0.5s ease;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/*  Efeito permanente da fibrinha branca correndo ao redor das DIVs*/
+.menu-box::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: inherit;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 2;
+
+  /* Mancha branca correndo pela borda */
+  background: conic-gradient(
+    from 0deg,
+    white 0deg,
+    transparent 40deg,
+    transparent 360deg
+  );
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+
+  animation: spinBorder 3s linear infinite;
+  opacity: 1; /* Ativo SEM hover */
+}
+
+@keyframes spinBorder {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.menu-box::before {
+  content: '';
+  position: absolute;
+  top: -2px; right: -2px; bottom: -2px; left: -2px;
+  background: conic-gradient(
+    from var(--start-angle) at 50% 50%,
+    rgba(255, 255, 255, 1) 0deg,
+    rgba(255, 255, 255, 0.8) 30deg,
+    rgba(255, 255, 255, 0) 60deg,
+    rgba(255, 255, 255, 0) 300deg,
+    rgba(255, 255, 255, 0.8) 330deg
+  );
+  border-radius: inherit;
+  z-index: -1;
+  animation: rotatingBorder 3s linear infinite;
+  opacity: 0; /* Invisível inicialmente */
+  transition: opacity 0.3s ease;
+}
+
+/* Mostrar efeito da borda no hover */
+.menu-box:hover::before {
+  opacity: 0.7;
+}
+
+
+/* Hover com efeito neon suave, mantendo transparência no meio */
+.menu-box:hover {
+  transform: scale(1.1) translateY(-10px);
+  box-shadow:
+    0 0 25px 5px currentColor,
+    inset 0 0 40px 10px transparent;
+  z-index: 2;
+}
+
+/* Hero (DIV 1) */
+.hero-box {
+  padding: 3rem 2rem;
+  text-align: center;
+  background-color: rgba(10, 10, 10, 0.7);
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px 5px rgba(0, 255, 100, 0.8),    
+  inset 0 0 40px 10px transparent;
+}
+
+.hero-box h1 {
+  font-size: 3.5rem;
+  margin: 0;
+  color: var(--neon-green);
+  text-shadow: var(--neon-shadow) var(--neon-green);
+}
+
+.hero-box p {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Linha com as 5 DIVs */
+.menu-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 2rem;
+  flex-wrap: wrap;
+  /* Dá responsividade básica pra evitar quebra feia */
+}
+
+/* DIVs 2, 3, 4 */
+.menu-box {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  width: 200px;
+  height: 300px;
+  text-align: center;
+  border-radius: 12px;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Efeitos de hover com cores diferentes */
+.menu-sobre {
+  border-color: var(--neon-blue);
+  color: var(--neon-white);
+}
+
+.menu-sobre:hover {
+  color: var(--neon-blue);
+  box-shadow: 0 0 25px 5px var(--neon-blue), inset 0 0 40px 10px rgba(0, 100, 255, 0.2);
+}
+
+.menu-projetos {
+  border-color: var(--neon-purple);
+  color: var(--neon-white);
+}
+
+.menu-projetos:hover {
+  color: var(--neon-purple);
+  box-shadow: 0 0 25px 5px var(--neon-purple), inset 0 0 40px 10px rgba(128, 0, 255, 0.2);
+}
+
+.menu-formacao {
+  border-color: var(--neon-yellow);
+  color: var(--neon-white);
+}
+
+.menu-formacao:hover {
+  color: var(--neon-yellow);
+  box-shadow: 0 0 25px 5px var(--neon-yellow), inset 0 0 40px 10px rgba(255, 255, 0, 0.2);
+}
+
+.menu-skills {
+  border-color: var(--neon-red);
+  color: var(--neon-white);
+}
+
+.menu-skills:hover {
+  color: var(--neon-red);
+  box-shadow: 0 0 25px 5px var(--neon-red), inset 0 0 40px 10px rgba(255, 0, 0, 0.2);
+}
+
+.menu-contato {
+  border-color: var(--neon-orange);
+  color: var(--neon-white);
+}
+
+.menu-contato:hover {
+  color: var(--neon-orange);
+  box-shadow: 0 0 25px 5px var(--neon-orange), inset 0 0 40px 10px rgba(255, 165, 0, 0.2);
+}
+
+.menu-box.mouse-effect {
+  transition: transform 0.1s ease;
+}
+
+.cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+  margin-left: 4px;
+  color: white;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+.typing-footer {
+  position: fixed;
+  bottom: 10px;
+  width: 100%;
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.95rem;
+  color: var(--neon-white);
+  z-index: 10;
+  pointer-events: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cursor::after {
+  content: '|';
+  animation: blink 1s infinite;
+  margin-left: 4px;
+  color: white;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Social Icons fixos no canto direito */
+.social-fixed {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+}
+
+.social-fixed img {
+  width: 42px;
+  height: 42px;
+  transition: transform 0.2s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 5px var(--neon-green));
+}
+
+.social-fixed img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2) drop-shadow(0 0 10px white);
+}
+
+
+/* Mobile Responsivo */
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
+
+  .menu-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu-box {
+    width: 80%;
+    height: auto;
+    margin-bottom: 1.5rem;
+  }
+}
