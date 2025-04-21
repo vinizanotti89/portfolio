@@ -1,2 +1,0 @@
-# portfolio
-Portfólio Vinícius Zanotti
