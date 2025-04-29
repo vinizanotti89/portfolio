@@ -1,0 +1,96 @@
+html,
+body {
+    height: 100%;
+    overflow-y: auto;
+    text-align: left !important;
+}
+
+:root {
+    --neon-yellow: #fcf403;
+}
+
+.formation-section {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--neon-white);
+    font-weight: bold;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 6rem;
+    position: relative;
+}
+
+.formation-title {
+    color: var(--neon-yellow);
+    font-size: 1.6rem;
+    margin: 2rem 0 1rem;
+    border-bottom: 1px solid var(--neon-yellow);
+    padding-bottom: 0.3rem;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+.formation-content p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 0.5rem 0;
+    white-space: pre-wrap;
+    font-family: 'Fira Code', monospace;
+}
+
+.formation-back-button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+    background: rgb(109, 106, 12);
+    color: #fcf403;
+    font-weight: bold;
+    border: 2px solid #ffff00;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px #f2ea06;
+    transition: all 0.3s ease;
+}
+
+.formation-back-button:hover {
+    background: #e2e507;
+    box-shadow: 0 0 15px #f2df0d;
+    transform: scale(1.05);
+}
+
+.formation-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2rem 0;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: #1a1a1a;
+    box-shadow: 0 0 10px #fcf40355;
+}
+
+.formation-block.left {
+    align-items: flex-start;
+    text-align: left;
+    border-left: 4px solid var(--neon-yellow);
+}
+
+.formation-block.right {
+    align-items: flex-end;
+    text-align: right;
+    border-right: 4px solid var(--neon-yellow);
+}
+
+@media (max-width: 768px) {
+    .formation-block {
+      align-items: center !important;
+      text-align: center !important;
+      border-left: none;
+      border-right: none;
+      border-top: 2px solid var(--neon-yellow);
+    }
+  }

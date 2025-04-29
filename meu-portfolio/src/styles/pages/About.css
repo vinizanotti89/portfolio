@@ -1,0 +1,349 @@
+html,
+body {
+    height: 100%;
+    overflow-y: auto;
+    text-align: left !important;
+}
+
+.about-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--neon-white);
+    font-weight: bold;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 6rem;
+    position: relative;
+    /* Para posicionamento do botão fixo */
+}
+
+.about-back-button {
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 100;
+    background: rgba(0, 255, 255, 0.2);
+    color: var(--neon-blue);
+    font-weight: bold;
+    border: 2px solid var(--neon-blue);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.31);
+    transition: all 0.3s ease;
+}
+
+.about-back-button:hover {
+    background: rgba(0, 255, 255, 0.4);
+    box-shadow: 0 0 15px var(--neon-blue);
+    transform: scale(1.05);
+}
+
+/* Estilo para a foto de família */
+.family-photo-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.family-photo {
+    width: 100%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 0 20px var(--neon-blue);
+    border: 2px solid var(--neon-blue);
+    position: relative; 
+}
+
+.family-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.5s ease;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    pointer-events: none;
+    position: relative;
+    z-index: 1;
+}
+
+/* Camada de proteção sobre a imagem */
+.family-photo::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 10;
+    pointer-events: auto; 
+    cursor: default;
+}
+
+/* Camada de proteção invisível sobre a imagem */
+.photo-protection-overlay {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 2; /* Acima da imagem */
+    cursor: default;
+}
+
+/* Mensagem de aviso quando tenta selecionar a imagem (opcional) */
+.family-photo::before {
+    content: "Imagem protegida";
+    position: absolute;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    color: var(--neon-blue);
+    padding: 8px 16px;
+    border-radius: 4px;
+    z-index: 3;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* Mostrar mensagem em tentativas de interação não permitidas */
+.family-photo:active::before {
+    opacity: 1;
+}
+
+.family-photo:hover img {
+    transform: scale(1.05);
+}
+
+.about-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.5rem;
+}
+
+/* Layout alternado */
+.about-section {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--neon-blue);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: 0 0 15px var(--neon-blue);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 70%;
+    max-width: 600px;
+    margin-bottom: 1rem;
+}
+
+/* Alinhamento esquerdo */
+.about-section.left-align {
+    align-self: flex-start;
+    border-left: 5px solid var(--neon-blue);
+}
+
+/* Alinhamento direito */
+.about-section.right-align {
+    align-self: flex-end;
+    border-right: 5px solid var(--neon-blue);
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 25px var(--neon-blue);
+}
+
+.about-section h2 {
+    font-size: 1.8rem;
+    color: var(--neon-blue);
+    margin-bottom: 1rem;
+    font-family: 'Courier New', monospace;
+    text-shadow: 0 0 5px var(--neon-blue), 0 0 10px var(--neon-blue);
+}
+
+.about-section p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    font-family: 'Courier New', monospace;
+}
+
+.superpowers p {
+    font-family: 'Courier New', monospace;
+    background: #282a36;
+    padding: 1rem; 
+    border-radius: 0.5rem;
+    text-align: left !important;
+    white-space: pre-wrap;
+    word-break: break-word;
+    box-shadow: 0 0 20px #6272a4;
+    border: 1px solid #44475a;
+    font-size: 1rem;
+    line-height: 1.6;
+    display: block;  
+    margin: 0;       
+}
+.superpowers p *, 
+.superpowers p span {
+    text-align: left !important;
+}
+
+.about-section.right-align.big-box {
+    align-self: flex-end;
+    border-right: 5px solid var(--neon-blue);
+}
+
+.about-section.right-align.big-box p {
+    text-align: left !important;
+}
+
+.superpowers .keyword {
+    color: #ff79c6;
+    font-weight: bold;
+}
+
+.superpowers .variable {
+    color: #8be9fd;
+}
+
+.superpowers .operator {
+    color: #f8f8f2;
+}
+
+.superpowers .property {
+    color: #50fa7b;
+}
+
+.superpowers .bracket {
+    color: #f8f8f2;
+}
+
+.superpowers .string {
+    color: #f1fa8c;
+}
+
+.superpowers .function {
+    color: #bd93f9;
+}
+
+.superpowers .method {
+    color: #ffb86c;
+}
+
+.about-section.big-box {
+    width: 80%;
+    max-width: 700px;
+}
+
+/* Media query específica para dispositivos touch */
+@media (hover: none) {
+    /* Esta regra atinge qualquer dispositivo sem hover (maioria dos touchscreens) */
+    .family-photo img {
+        touch-action: none;
+    }
+    
+    .photo-protection-overlay {
+        touch-action: none;
+    }
+}
+
+/* Media query para dispositivos com pointer grosseiro (dedos) */
+@media (pointer: coarse) {
+    /* Esta regra atinge dispositivos que usam interação menos precisa como dedos */
+    .family-photo {
+        touch-action: none;
+    }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px){
+    .about-section {
+        width: 100%;
+        max-width: none;
+    }
+
+    .back-button {
+        top: 1.5rem;
+        right: 1.5rem;
+        padding: 0.5rem 1rem;
+        font-size: 1rem;
+        box-shadow: 0 0 5px rgba(0, 255, 255, 0.25);
+    }
+
+    .family-photo {
+        max-width: 300px; 
+    }
+
+    .about-section.left-align,
+    .about-section.right-align {
+        align-self: center;
+    }
+
+    .family-photo {
+        height: 250px;
+    }
+
+    .family-photo img {
+        touch-action: none;
+    }
+    
+    .photo-protection-overlay {
+        touch-action: none;
+    }
+}
+
+@media (max-width: 480px){
+    .back-button {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+        border-width: 1px;
+        box-shadow: 0 0 3px rgba(0, 255, 255, 0.2);
+    }
+
+    .family-photo {
+        max-width: 200px; 
+    }
+    
+    .back-button:hover {
+        transform: scale(1.02); 
+    }
+
+    .about-section.left-align,
+    .about-section.right-align {
+        align-self: center;
+    }
+
+    .family-photo {
+        height: 250px;
+    }
+
+    .family-photo img {
+        touch-action: none;
+    }
+    
+    .photo-protection-overlay {
+        touch-action: none;
+    }
+}

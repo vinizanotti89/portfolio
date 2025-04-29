@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+# Ignorar imagens pessoais/familiares
+/src/assets/img/family-photo.*
+/src/assets/img/personal/*
+/src/assets/img/*.jpg
+/src/assets/img/*.jpeg
+/src/assets/img/*.png
+/src/assets/img/*.gif
+/src/assets/img/*.webp
+
+# Exceções - imagens que podem ser incluídas no repositório
+!/src/assets/img/placeholder-*.jpg
+!/src/assets/img/logo.png
+!/src/assets/img/icons/

@@ -1,0 +1,227 @@
+@import './assets/colors.css';
+
+:root {
+  --start-angle: 0deg;
+}
+
+body {
+  margin: 0;
+  background-image: url('./assets/img/Fundo-2.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  font-family: 'Orbitron', sans-serif;
+  color: var(--neon-white);
+  overflow: hidden;
+  /* Impede scroll na tela inicial - será sobrescrito em responsivo */
+}
+
+/* Efeitos globais do cursor */
+.cursor::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+  margin-left: 4px;
+  color: white;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Social Icons fixos no canto direito */
+.social-fixed {
+  position: fixed;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+}
+
+.social-fixed img {
+  width: 42px;
+  height: 42px;
+  transition: transform 0.2s ease, filter 0.3s ease;
+  filter: drop-shadow(0 0 5px var(--neon-green));
+}
+
+.social-fixed img:hover {
+  transform: scale(1.2);
+  filter: brightness(1.2) drop-shadow(0 0 10px white);
+}
+
+/* Estilo para o efeito de transição de página */
+.page-transition {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  width: 0;
+  height: 100vh;
+  background: linear-gradient(90deg, rgba(0, 255, 255, 0.3), rgba(0, 255, 255, 0.8));
+  pointer-events: none;
+  box-shadow: 0 0 30px #0ff, 0 0 60px #0ff;
+  transition: width 600ms cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Direção da direita para a esquerda */
+.page-transition.right {
+  right: 0;
+  clip-path: polygon(
+      100% 0, 
+      100% 0, 
+      100% 100%, 
+      80% 100%, 
+      95% 50%, 
+      80% 0
+  );
+  transition: all 600ms cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Direção da esquerda para a direita */
+.page-transition.left {
+  left: 0;
+  clip-path: polygon(
+      0 0, 
+      20% 0, 
+      5% 50%, 
+      20% 100%, 
+      0 100%, 
+      0 0
+  );
+  transition: all 600ms cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+/* Estado ativo da transição */
+.page-transition.active {
+  width: 100vw;
+}
+
+.page-transition.right.active {
+  clip-path: polygon(
+      0 0, 
+      100% 0, 
+      100% 100%, 
+      0 100%, 
+      0 50%, 
+      0 0
+  );
+}
+
+.page-transition.left.active {
+  clip-path: polygon(
+      0 0, 
+      100% 0, 
+      100% 50%, 
+      100% 100%, 
+      0 100%, 
+      0 0
+  );
+}
+
+/* Estado final da transição */
+.page-transition.completed {
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+
+/* Estilo para o efeito 3D nos menus */
+.menu-box.mouse-effect {
+  transition: transform 0.15s ease-out, background-image 0.15s ease-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-box.mouse-effect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background: conic-gradient(
+      from var(--start-angle, 0deg),
+      transparent 0deg,
+      #0ff5 20deg,
+      transparent 40deg
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-box.mouse-effect:hover::before {
+  opacity: 0.5;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+/* Efeito quando um menu é clicado */
+.menu-box.clicked {
+  animation: pulseOut 0.6s cubic-bezier(0.5, 0, 0.3, 1);
+  pointer-events: none;
+}
+
+@keyframes pulseOut {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  50% {
+      transform: scale(1.1);
+      opacity: 0.7;
+  }
+  100% {
+      transform: scale(0);
+      opacity: 0;
+  }
+}
+
+/* Responsividade Global */
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+    /* Permite scroll em telas menores */
+  }
+
+  .social-fixed {
+    right: 10px;
+    gap: 10px;
+  }
+
+  .social-fixed img {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .social-fixed {
+    bottom: 20px;
+    top: auto;
+    right: 10px;
+    transform: none;
+    flex-direction: row;
+  }
+}
+
+/* Rotação de bordas que é usada em vários componentes */
+@keyframes rotatingBorder {
+  to {
+    transform: rotate(1turn);
+  }
+}
