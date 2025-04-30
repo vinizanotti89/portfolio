@@ -66,6 +66,13 @@ import telaSorteio from '../assets/img/projects/sorteio-numeros/telaSorteio.png'
 import resultado from '../assets/img/projects/sorteio-numeros/resultado.png';
 import erroUsuario from '../assets/img/projects/sorteio-numeros/erroUsuario.png';
 
+//Conversor de Moedas
+import dolar from '../assets/img/projects/conversor-moedas/dolar.png';
+import euro from '../assets/img/projects/conversor-moedas/euro.png';
+import librasEsterlinas from '../assets/img/projects/conversor-moedas/librasEsterlinas.png';
+import yene from '../assets/img/projects/conversor-moedas/yene.png';
+import real from '../assets/img/projects/conversor-moedas/real.png';
+
 const Projects = () => {
     const navigate = useNavigate();
 
@@ -142,7 +149,7 @@ const Projects = () => {
             images: [loginOk, loginBad, newUser, selectAvatar, changeAvatar, dashboard], 
             vercelLink: "https://fullstack-cadastro-usuarios.vercel.app/",
             githubLink: "https://github.com/vinizanotti89/fullstack-cadastro-usuarios",
-            //youtubeLink: "https://youtube.com/watch?v=seuVideo1",
+            youtubeLink: "https://youtu.be/jgFAlLA98ZI",
             difficulties: "Mostrar centenas de avatares na tela? Sem chance. Tive que bolar outra ideia.",
             solutions: "Mostrei só alguns avatares por vez e criei um botão pra recarregar as opções. Depois, se quiser trocar de avatar, o usuário pode fazer isso direto pelo dashboard.",
             stack: [
@@ -164,7 +171,7 @@ const Projects = () => {
             images: [telaInicio, carrossel1, carrossel2, carrosselVertical, modal, contato], 
             vercelLink: "https://elittegroup.vercel.app/",
             githubLink: "https://github.com/vinizanotti89/elittegroup",
-            //youtubeLink: "https://youtube.com/watch?v=seuVideo3",
+            // youtubeLink: "https://youtu.be/jgFAlLA98ZI",
             difficulties: "Adaptar o carrossel para diferentes formatos de tela sem quebrar o layout foi o principal desafio.",
             solutions: "Dominei o funcionamento do carrossel, ajustei para diferentes resoluções e ainda ensinei a técnica para colegas em estudo.",
             stack: [
@@ -212,7 +219,7 @@ const Projects = () => {
             images: [telaBagunca, contatoBagunca], 
             vercelLink: "https://mariokart-six.vercel.app/",
             githubLink: "https://github.com/vinizanotti89/mariokart",
-            //youtubeLink: "https://youtube.com/watch?v=seuVideo2",
+            youtubeLink: "https://youtu.be/VfTWlEa8v_o",
             difficulties: "Organizar (ou tentar pelo menos) múltiplos elementos animados sem poluir a experiência foi o principal desafio (e a principal bagunça).",
             solutions: "Implementei uma página funcional e divertida, focando mais em criatividade e liberdade de construção.",
             stack: [
@@ -229,6 +236,22 @@ const Projects = () => {
             vercelLink: "https://vercel.com/vinicius-zanottis-projects/sorteionumero",
             githubLink: "https://github.com/vinizanotti89/sorteionumero",
             //youtubeLink: "https://youtube.com/watch?v=seuVideo2",
+            difficulties: "Entender como garantir aleatoriedade real e validar corretamente os dados digitados pelo usuário.",
+            solutions: "Implementei lógica de verificação, telas de erro, e um sorteio 100% funcional mesmo com entrada maluca.",
+            stack: [
+                { icon: javascriptIcon, name: "JavaScript" },
+                { icon: htmlIcon, name: "HTML" },
+                { icon: cssIcon, name: "CSS" }
+            ]
+        },
+        {
+            id: 8,
+            name: "Conversor de Moedas",
+            description: "Sorteador de Números com validação de entradas, exibição visual amigável e geração aleatória confiável.",
+            images: [dolar, euro, librasEsterlinas, yene, real], 
+            vercelLink: "https://conversordemoedas-seven.vercel.app/",
+            githubLink: "https://github.com/vinizanotti89/conversordemoedas",
+            youtubeLink: "https://youtu.be/3fuaAt5NjHQ",
             difficulties: "Entender como garantir aleatoriedade real e validar corretamente os dados digitados pelo usuário.",
             solutions: "Implementei lógica de verificação, telas de erro, e um sorteio 100% funcional mesmo com entrada maluca.",
             stack: [
