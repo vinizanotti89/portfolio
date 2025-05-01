@@ -23,3 +23,24 @@
 .pong-paddle-hover {
     cursor: move;
 }
+
+@media (max-width: 768px) {
+    .pong-container {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .pong-canvas {
+        width: 100% !important;
+        height: 100% !important;
+        opacity: 0.4; /* Um pouco mais transparente em mobile */
+    }
+}
+
+/* Ajustes específicos para telas muito pequenas */
+@media (max-width: 480px) {
+    .pong-canvas {
+        opacity: 0.3; /* Ainda mais transparente em telas muito pequenas */
+    }
+}

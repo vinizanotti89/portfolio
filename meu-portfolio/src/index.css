@@ -14,6 +14,22 @@ body {
   color: var(--neon-white);
   overflow: hidden;
   /* Impede scroll na tela inicial - será sobrescrito em responsivo */
+  min-height: 100vh; /* Garante altura mínima */
+  position: relative; /* Contexto para posicionamento */
+}
+
+/* Hack para garantir background em mobile */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('./assets/img/Fundo-2.png');
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
 }
 
 /* Efeitos globais do cursor */
@@ -207,6 +223,11 @@ body {
     width: 32px;
     height: 32px;
   }
+
+  /* Garantir que o elemento raiz tenha altura adequada */
+  #root {
+    min-height: 100vh;
+  }
 }
 
 @media (max-width: 480px) {
@@ -216,6 +237,12 @@ body {
     right: 10px;
     transform: none;
     flex-direction: row;
+  }
+  
+  /* Ajuste no background para telas muito pequenas */
+  body::before {
+    background-attachment: scroll;
+    background-position: center center;
   }
 }
 
