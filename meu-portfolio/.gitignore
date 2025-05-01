@@ -24,16 +24,3 @@ dist-ssr
 *.sw?
 
 
-# Ignorar imagens pessoais/familiares
-/src/assets/img/family-photo.*
-/src/assets/img/personal/*
-/src/assets/img/*.jpg
-/src/assets/img/*.jpeg
-/src/assets/img/*.png
-/src/assets/img/*.gif
-/src/assets/img/*.webp
-
-# Exceções - imagens que podem ser incluídas no repositório
-!/src/assets/img/placeholder-*.jpg
-!/src/assets/img/logo.png
-!/src/assets/img/icons/

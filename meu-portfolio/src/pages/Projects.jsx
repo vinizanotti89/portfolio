@@ -247,13 +247,13 @@ const Projects = () => {
         {
             id: 8,
             name: "Conversor de Moedas",
-            description: "Sorteador de Números com validação de entradas, exibição visual amigável e geração aleatória confiável.",
+            description: "O Projeto Que Me Fez Acreditar Que Eu Podia Ser Dev",
             images: [dolar, euro, librasEsterlinas, yene, real], 
             vercelLink: "https://conversordemoedas-seven.vercel.app/",
             githubLink: "https://github.com/vinizanotti89/conversordemoedas",
             youtubeLink: "https://youtu.be/3fuaAt5NjHQ",
-            difficulties: "Entender como garantir aleatoriedade real e validar corretamente os dados digitados pelo usuário.",
-            solutions: "Implementei lógica de verificação, telas de erro, e um sorteio 100% funcional mesmo com entrada maluca.",
+            difficulties: "Desafios com a integração da API de câmbio, formatação dos dados recebidos e criação de backgrounds visuais diferentes para cada moeda.",
+            solutions: "Estudei bastante sobre consumo de APIs com JavaScript puro e desenvolvi uma lógica personalizada para aplicar um background temático a cada moeda convertida.",
             stack: [
                 { icon: javascriptIcon, name: "JavaScript" },
                 { icon: htmlIcon, name: "HTML" },
