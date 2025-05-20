@@ -19,7 +19,7 @@ import mongodbIcon from '../assets/img/skills/mongodb.png';
 
 // DevOps & Ferramentas
 import viteIcon from '../assets/img/skills/vite.png';
-import c from '../assets/img/skills/docker.png';
+import dockerIcon from '../assets/img/skills/docker.png';
 import vercelIcon from '../assets/img/skills/vercel.png';
 import prismaIcon from '../assets/img/skills/prisma.png';
 import renderIcon from '../assets/img/skills/render.png';
@@ -190,7 +190,7 @@ const Projects = () => {
                 { icon: mongodbIcon, name: "MongoDB" },
                 { icon: viteIcon, name: "Vite" },
                 { icon: vercelIcon, name: "Vercel" },
-                { icon: dockerIcon, name: "Prisma" },
+                { icon: prismaIcon, name: "Prisma" },
                 { icon: renderIcon, name: "Render" }
             ]
         },
