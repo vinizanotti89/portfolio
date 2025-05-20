@@ -19,12 +19,20 @@ import mongodbIcon from '../assets/img/skills/mongodb.png';
 
 // DevOps & Ferramentas
 import viteIcon from '../assets/img/skills/vite.png';
-// import dockerIcon from '../assets/img/skills/docker.png';
+import c from '../assets/img/skills/docker.png';
 import vercelIcon from '../assets/img/skills/vercel.png';
 import prismaIcon from '../assets/img/skills/prisma.png';
 import renderIcon from '../assets/img/skills/render.png';
 
 //Imagens de projetos
+
+//Painel Influenciadores
+import Dashboard from '../assets/img/projects/painel-influenciadores/Dashboard.png';
+import DashboardDark from '../assets/img/projects/painel-influenciadores/DashboardDark.png';
+import Claims from '../assets/img/projects/painel-influenciadores/Claims.png';
+import Analytics from '../assets/img/projects/painel-influenciadores/Analytics.png';
+import Leaderboard from '../assets/img/projects/painel-influenciadores/Leaderboard.png';
+
 
 //cadastro de usuarios
 import loginOk from '../assets/img/projects/cadastro-usuarios/loginOk.png';
@@ -143,6 +151,28 @@ const Projects = () => {
     // Dados dos projetos
     const projects = [
         {
+            id: 1,
+            name: "Full Stack Painel Influenciadores",
+            description: "Desenvolver uma plataforma completo que permitisse pesquisar e analisar influenciadores médicos com base em critérios de confiabilidade, número de seguidores, curtidas e quantidade de vídeos",
+            images: [Dashboard, DashboardDark, Claims, Analytics, Leaderboard], 
+            vercelLink: "https://painel-administrativo-influenciadores-d7h5.vercel.app/",
+            githubFrontLink: "https://github.com/vinizanotti89/influencers-frontend/",
+            githubBackLink: "https://github.com/vinizanotti89/influencers-backend",
+            youtubeLink: "https://youtu.be/hNf1EHZBeeg",
+            difficulties: "Criar plataformas gratuitas integrando APIs gratuitas e servidor gratuito. Fazer tudo isso rodar sem delay é improvável",
+            solutions: "Como não tive acesso à todas as principais plataformas, optei por usar YouTube, Instagram e LinkedIn como fornecedoras de informação, banco de dados MongDB e servidor AWS.",
+            stack: [
+                { icon: reactIcon, name: "React" },
+                { icon: javascriptIcon, name: "JavaScript" },
+                { icon: cssIcon, name: "CSS" },
+                { icon: nodejsIcon, name: "Node.js" },
+                { icon: mongodbIcon, name: "MongoDB" },
+                { icon: viteIcon, name: "Vite" },
+                { icon: vercelIcon, name: "Vercel" },
+                { icon: dockerIcon, name: "Docker" }
+            ]
+        },
+        {
             id: 2,
             name: "Full Stack Cadastro de Usuários / Dashboard",
             description: "Era pra ser só um projeto de curso, mas eu quis mais: criei uma aplicação funcional, com jeitão de produto real, pra mostrar que sei construir experiências de verdade.",
@@ -160,7 +190,7 @@ const Projects = () => {
                 { icon: mongodbIcon, name: "MongoDB" },
                 { icon: viteIcon, name: "Vite" },
                 { icon: vercelIcon, name: "Vercel" },
-                { icon: prismaIcon, name: "Prisma" },
+                { icon: dockerIcon, name: "Prisma" },
                 { icon: renderIcon, name: "Render" }
             ]
         },
