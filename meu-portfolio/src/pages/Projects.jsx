@@ -156,8 +156,8 @@ const Projects = () => {
             description: "Desenvolver uma plataforma completo que permitisse pesquisar e analisar influenciadores médicos com base em critérios de confiabilidade, número de seguidores, curtidas e quantidade de vídeos",
             images: [Dashboard, DashboardDark, Claims, Analytics, Leaderboard], 
             vercelLink: "https://painel-administrativo-influenciadores-d7h5.vercel.app/",
-            githubLink: "https://github.com/vinizanotti89/influencers-frontend/",
-            githubLink: "https://github.com/vinizanotti89/influencers-backend",
+            githubLink1: "https://github.com/vinizanotti89/influencers-frontend/",
+            githubLink2: "https://github.com/vinizanotti89/influencers-backend",
             youtubeLink: "https://youtu.be/hNf1EHZBeeg",
             difficulties: "Criar plataformas gratuitas integrando APIs gratuitas e servidor gratuito. Fazer tudo isso rodar sem delay é improvável",
             solutions: "Como não tive acesso à todas as principais plataformas, optei por usar YouTube, Instagram e LinkedIn como fornecedoras de informação, banco de dados MongDB e servidor AWS.",
@@ -342,7 +342,7 @@ const Projects = () => {
                                 </div>
                             )}
 
-                            <div className="project-info">
+<div className="project-info">
                                 <h2>{project.name}</h2>
                                 <p className="project-description">{project.description}</p>
 
@@ -350,9 +350,25 @@ const Projects = () => {
                                     <a href={project.vercelLink} target="_blank" rel="noopener noreferrer" className="project-link vercel-link">
                                         Veja Online
                                     </a>
-                                    <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="project-link github-link">
-                                        Código Fonte
-                                    </a>
+                                    
+                                    {project.githubLink && (
+                                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="project-link github-link">
+                                            Código Fonte
+                                        </a>
+                                    )}
+                                    
+                                    {project.githubLink1 && (
+                                        <a href={project.githubLink1} target="_blank" rel="noopener noreferrer" className="project-link github-link">
+                                            Código Fonte Frontend
+                                        </a>
+                                    )}
+                                    
+                                    {project.githubLink2 && (
+                                        <a href={project.githubLink2} target="_blank" rel="noopener noreferrer" className="project-link github-link">
+                                            Código Fonte Backend
+                                        </a>
+                                    )}
+                                    
                                     {project.youtubeLink && (
                                         <a href={project.youtubeLink} target="_blank" rel="noopener noreferrer" className="project-link youtube-link">
                                             Vídeo Explicação
