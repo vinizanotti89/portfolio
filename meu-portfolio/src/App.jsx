@@ -6,6 +6,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Formation from './pages/Formation';
 import Skills from './pages/Skills';
+import HeaderTop from './pages/Header/HeaderTop';
 
 // Importando scripts
 import { initMenuEffects } from './scripts/menuEffects';
@@ -39,6 +40,9 @@ const App = () => {
     <BrowserRouter>
       {/* PongBackground fica visível em todas as páginas */}
       <PongBackground />
+
+      {/* Topo fixo com seletor de idioma */}
+      <HeaderTop />
 
       {/* Roteamento para diferentes páginas */}
       <Routes>

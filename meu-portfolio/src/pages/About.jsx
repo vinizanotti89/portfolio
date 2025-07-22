@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { initTypingBatch } from '../scripts/typingEffect';
 import '../styles/pages/About.css';
 
+
 import familyPhoto from '../assets/img/family-photo.jpeg';
 
 const About = () => {
@@ -14,17 +15,17 @@ const About = () => {
             {
                 selector: '.essence p',
                 text: `A base de tudo que sou começa e termina com minha família. É onde me encontro, me fortaleço e me inspiro. Minha fé também é parte essencial do meu ser — sem Deus, nada disso seria possível. Renovar minha energia na igreja todo fim de semana é como reiniciar o sistema com propósito e amor. 🙏❤️`,
-                duration: 3000
+                duration: 1500
             },
             {
                 selector: '.likes p',
                 text: `Sou movido por tecnologia, café forte e boa música — de preferência com guitarras distorcidas. 🎸 Curto cozinhar, fazer aquele churrasco raiz, mergulhar em games e maratonar uns bons filmes e séries. Mas o que realmente expande minha mente é brincar com meu filho — ele ativa meu modo criativo como ninguém. E claro, programar pensando totalmente fora da caixinha: se é óbvio demais, não me serve. 🚀`,
-                duration: 3000
+                duration: 1500
             },
             {
                 selector: '.journey p',
                 text: `Por muito tempo, não entendi meu jeito intenso e acelerado de viver — até conhecer o TDAH. Hoje, vejo isso como parte do meu superpoder: um hiperfoco poderoso que me ajuda a enxergar soluções onde antes via obstáculos. Minha mente funciona diferente, e é exatamente isso que faz tudo isso ser possível. ⚡🧠`,
-                duration: 3000
+                duration: 1500
             },
             {
                 selector: '.superpowers p',
@@ -43,7 +44,7 @@ const About = () => {
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="function">console</span>.<span class="method">log</span>(<span class="string">"Pensando fora da caixa... e do componente."</span>);<br/>
 &nbsp;&nbsp;<span class="bracket">}</span><br/>
 <span class="bracket">}</span>;`,
-                duration: 5000
+                duration: 1500
             },
         ];
 

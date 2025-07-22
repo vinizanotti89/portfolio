@@ -1,4 +1,4 @@
-export function initTypingEffect(element, text, duration = 3000) {
+export function initTypingEffect(element, text, duration = 1500) {
     if (!element || !text) return;
 
     // Primeiro, limpar o conteúdo existente

@@ -90,7 +90,7 @@ const Projects = () => {
             {
                 selector: '.projects-intro p',
                 text: `Aqui você encontra alguns dos meus projetos mais recentes. Cada um deles representa um desafio único que me ajudou a crescer como desenvolvedor. Explore e descubra como transformo problemas em soluções criativas. 🚀✨`,
-                duration: 3000
+                duration: 1500
             }
         ];
 

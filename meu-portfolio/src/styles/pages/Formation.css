@@ -40,7 +40,7 @@ body {
 
 .formation-back-button {
     position: fixed;
-    top: 2rem;
+    top: 3.5rem;
     right: 2rem;
     z-index: 100;
     background: rgb(109, 106, 12);

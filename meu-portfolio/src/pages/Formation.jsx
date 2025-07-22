@@ -18,7 +18,7 @@ export default function Formation() {
             text: `
       <strong>Engenharia da Computação</strong> – Universidade Norte do Paraná – <em>Junho/2013</em><br/>
       <strong>MBA Gestão Empresarial</strong> – Universidade Tuiuti do Paraná – <em>Abril/2022</em>`,
-            duration: 2500
+            duration: 1500
           },
           {
             selector: '.formation-title-2',
@@ -31,12 +31,12 @@ export default function Formation() {
       <strong>Programação FullStack</strong> – DevClub – <em>Outubro/2024</em><br/>
       <strong>Introdução ao Python</strong> – Banco Santander – <em>Março/2025</em><br/>
       <strong>Programação Java JSE</strong> – Adetec – <em>Junho/2012</em>`,
-            duration: 2500
+            duration: 1500
           },
           {
             selector: '.formation-title-3',
             text: '🌐 Idiomas',
-            duration: 1000
+            duration: 1500
           },
           {
             selector: '.formation-language p',
