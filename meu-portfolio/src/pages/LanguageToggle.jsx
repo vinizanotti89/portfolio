@@ -12,7 +12,7 @@ export default function LanguageToggle() {
 
     // Limpa todos os cookies relacionados ao Google Translate
     Cookies.remove("googtrans", { path: "/" });
-    Cookies.remove("googtrans", { path: "/", domain: ".seu-dominio.com" }); // substitua pelo seu domínio
+    Cookies.remove("googtrans", { path: "/", domain: ".vinizanotti.dev" });
     Cookies.remove("googtrans", {
       path: "/",
       domain: window.location.hostname,
