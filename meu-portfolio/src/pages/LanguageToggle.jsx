@@ -157,34 +157,40 @@ export default function LanguageToggle() {
           src={brasilFlag}
           alt="Português"
           style={{
-            width: "32px",
+            width: "35px",
             cursor: "pointer",
             borderRadius: "50%",
-            border: currentLang === "/auto/pt" ? "2px solid white" : "none",
+            border: currentLang === "/auto/pt" ? "3px solid green" : "none",
           }}
           onClick={(e) => langChange("/auto/pt", e)}
+          onMouseOver={(e) => e.target.style.opacity = "0.8"}
+          onMouseOut={(e) => e.target.style.opacity = "1"}
         />
         <img
           src={euaFlag}
           alt="English"
           style={{
-            width: "32px",
+            width: "35px",
             cursor: "pointer",
             borderRadius: "50%",
-            border: currentLang === "/auto/en" ? "2px solid white" : "none",
+            border: currentLang === "/auto/en" ? "3px solid blue" : "none",
           }}
           onClick={(e) => langChange("/auto/en", e)}
+          onMouseOver={(e) => e.target.style.opacity = "0.8"}
+          onMouseOut={(e) => e.target.style.opacity = "1"}
         />
         <img
           src={espanhaFlag}
           alt="Español"
           style={{
-            width: "32px",
+            width: "35px",
             cursor: "pointer",
             borderRadius: "50%",
-            border: currentLang === "/auto/es" ? "2px solid white" : "none",
+            border: currentLang === "/auto/es" ? "3px solid yellow" : "none",
           }}
           onClick={(e) => langChange("/auto/es", e)}
+          onMouseOver={(e) => e.target.style.opacity = "0.8"}
+          onMouseOut={(e) => e.target.style.opacity = "1"}
         />
       </div>
       <div id="google_translate_element" style={{ display: "none" }}></div>
