@@ -7,6 +7,7 @@ import '../styles/pages/Skills.css';
 import javascriptIcon from '../assets/img/skills/js.png';
 import htmlIcon from '../assets/img/skills/html.png';
 import cssIcon from '../assets/img/skills/css.png';
+import tailwindIcon from '../assets/img/skills/tailwind.png';
 import typescriptIcon from '../assets/img/skills/typescript.png';
 import swiftIcon from '../assets/img/skills/swift.jpg';
 import pythonIcon from '../assets/img/skills/python.png';
@@ -19,6 +20,7 @@ import bootstrapIcon from '../assets/img/skills/bootstrap.png';
 
 // Databases
 import mongodbIcon from '../assets/img/skills/mongodb.png';
+import postgreIcon from '../assets/img/skills/postgre.png';
 import mysqlIcon from '../assets/img/skills/mysql.png';
 import oracleIcon from '../assets/img/skills/oracle.png';
 import sqlServerIcon from '../assets/img/skills/sqlserver.png';
@@ -150,6 +152,13 @@ const Skills = () => {
                         </div>
                         <div className="skill-item">
                             <div className="skill-icon">
+                                <img src={tailwindIcon} alt="Tailwind" />
+                                <span className="placeholder-img"></span>
+                            </div>
+                            <p>Tailwind</p>
+                        </div>
+                        <div className="skill-item">
+                            <div className="skill-icon">
                                 <img src={typescriptIcon} alt="TypeScript" />
                                 <span className="placeholder-img"></span>
                             </div>
@@ -210,6 +219,13 @@ const Skills = () => {
                                 <span className="placeholder-img"></span>
                             </div>
                             <p>MongoDB</p>
+                        </div>
+                        <div className="skill-item">
+                            <div className="skill-icon">
+                                <img src={postgreIcon} alt="PostgreSQL" />
+                                <span className="placeholder-img"></span>
+                            </div>
+                            <p>PostgreSQL</p>
                         </div>
                         <div className="skill-item">
                             <div className="skill-icon">
