@@ -217,6 +217,21 @@ const Projects = () => {
             ]
         },
         {
+            id: 9,
+            name: "Tradutor automático com API Google Tradutor",
+            description: "Desenvolvi um template completo e gratuito de tradutor automático usando a API do Google Tradutor. Além de utilizar em meus projetos, disponibilizo para que outros desenvolvedores também possam aprender e aplicar facilmente.",
+            images: [linkedin, github, english, spanish], 
+            vercelLink: "https://www.linkedin.com/feed/update/urn:li:activity:7354140924278431744/",
+            githubLink: "https://github.com/vinizanotti89/TemplateGoogleTradutor",
+            //youtubeLink: "https://youtube.com/watch?v=seuVideo3",
+            difficulties: "O projeto nasceu de uma demanda profissional e inicialmente foi feito em React. Mas pensando em colegas que ainda não dominam a tecnologia, criei também uma versão em JavaScript puro, garantindo acessibilidade para todos os níveis de experiência.",
+            solutions: "Um tradutor automático pode trazer valor a praticamente qualquer aplicação. Por isso, construí um template simples, funcional e gratuito, pronto para ser adaptado em qualquer projeto, ajudando tanto no aprendizado quanto na prática.",
+            stack: [
+                { icon: reactIcon, name: "React" },
+                { icon: javascriptIcon, name: "JavaScript" },
+            ]
+        },
+        {
             id: 4,
             name: "Cronômetro Completo",
             description: "Cronômetro evoluído, com gravação de voltas, troca de temas e exportação de dados em CSV, JSON e Texto Plano.",
@@ -230,21 +245,6 @@ const Projects = () => {
                 { icon: javascriptIcon, name: "JavaScript" },
                 { icon: htmlIcon, name: "HTML" },
                 { icon: cssIcon, name: "CSS" }
-            ]
-        },
-        {
-            id: 9,
-            name: "Tradutor automático com API Google Tradutor",
-            description: "Desenvolvi um template completo e gratuito de tradutor automático usando a API do Google Tradutor. Além de utilizar em meus projetos, disponibilizo para que outros desenvolvedores também possam aprender e aplicar facilmente.",
-            images: [linkedin, github, english, spanish], 
-            vercelLink: "https://www.linkedin.com/feed/update/urn:li:activity:7354140924278431744/",
-            githubLink: "https://github.com/vinizanotti89/TemplateGoogleTradutor",
-            //youtubeLink: "https://youtube.com/watch?v=seuVideo3",
-            difficulties: "O projeto nasceu de uma demanda profissional e inicialmente foi feito em React. Mas pensando em colegas que ainda não dominam a tecnologia, criei também uma versão em JavaScript puro, garantindo acessibilidade para todos os níveis de experiência.",
-            solutions: "Um tradutor automático pode trazer valor a praticamente qualquer aplicação. Por isso, construí um template simples, funcional e gratuito, pronto para ser adaptado em qualquer projeto, ajudando tanto no aprendizado quanto na prática.",
-            stack: [
-                { icon: reactIcon, name: "React" },
-                { icon: javascriptIcon, name: "JavaScript" },
             ]
         },
         {
