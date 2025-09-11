@@ -39,52 +39,31 @@ export default function LanguageToggle() {
       }
     });
 
-    // Aguarda um pouco antes de definir o novo cookie
+    // Define o novo idioma
+    Cookies.set("googtrans", lang, { path: "/" });
+
+    // Salva a rota atual antes do reload
+    const currentPath = window.location.pathname + window.location.search + window.location.hash;
+    sessionStorage.setItem('translationRedirect', currentPath);
+    
+    // Remove elementos do Google Translate
+    removeGoogleTranslateElements();
+
+    // Força o reload - mas de forma mais segura
     setTimeout(() => {
-      Cookies.set("googtrans", lang, { path: "/" });
-
-      // Remove elementos do Google Translate antes de reinicializar
-      removeGoogleTranslateElements();
-
-      // Força a reconstrução do tradutor
-      const translateElement = document.getElementById(
-        "google_translate_element"
-      );
-      if (translateElement) {
-        translateElement.innerHTML = "";
+      try {
+        // Tenta recarregar a página atual
+        window.location.reload(true);
+      } catch (error) {
+        console.log("Erro no reload, tentando navegação manual:", error);
+        // Se falhar, navega manualmente para a rota atual
+        window.location.href = window.location.origin + currentPath;
       }
-
-      // Reinicializa o tradutor
-      if (window.google && window.google.translate) {
-        try {
-          new window.google.translate.TranslateElement(
-            {
-              pageLanguage: "pt",
-              includedLanguages: "en,pt,es",
-              layout:
-                window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-              autoDisplay: false,
-            },
-            "google_translate_element"
-          );
-          
-          // Remove elementos após inicialização
-          setTimeout(removeGoogleTranslateElements, 500);
-        } catch (error) {
-          console.log("Erro ao reinicializar tradutor:", error);
-        }
-      }
-
-      // Recarrega a página após um pequeno delay
-      setTimeout(() => {
-        window.location.reload();
-      }, 100);
-    }, 50);
+    }, 100);
   };
 
   // Função para remover todos os elementos do Google Translate
   const removeGoogleTranslateElements = () => {
-    // Lista de todos os possíveis elementos do Google Translate
     const selectors = [
       ".goog-te-banner-frame",
       ".goog-te-ftab",
@@ -98,7 +77,6 @@ export default function LanguageToggle() {
       ".VIpgJd-ZVi9od-ORHb-OEVmcd",
       "[class*='goog-te']",
       ".skiptranslate",
-      // Adiciona seletores mais específicos
       "iframe[src*='translate.google']",
       "div[id*='google_translate']",
       ".goog-te-spinner-pos"
@@ -107,13 +85,13 @@ export default function LanguageToggle() {
     selectors.forEach((selector) => {
       const elements = document.querySelectorAll(selector);
       elements.forEach((el) => {
-        if (el.id !== "google_translate_element") { // Não remove o elemento principal
+        if (el.id !== "google_translate_element") {
           el.remove();
         }
       });
     });
 
-    // Remove também qualquer iframe do Google Translate
+    // Remove iframes do Google Translate
     const iframes = document.querySelectorAll('iframe');
     iframes.forEach(iframe => {
       if (iframe.src && iframe.src.includes('translate.google')) {
@@ -128,25 +106,36 @@ export default function LanguageToggle() {
   };
 
   const googleTranslateElementInit = () => {
-    // Limpa qualquer instância anterior
+    // Remove elementos anteriores
     removeGoogleTranslateElements();
 
-    new window.google.translate.TranslateElement(
-      {
-        pageLanguage: "pt",
-        includedLanguages: "en,pt,es",
-        layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
-        autoDisplay: false,
-      },
-      "google_translate_element"
-    );
+    // Inicializa o Google Translate
+    if (window.google && window.google.translate) {
+      new window.google.translate.TranslateElement(
+        {
+          pageLanguage: "pt",
+          includedLanguages: "en,pt,es",
+          layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false,
+        },
+        "google_translate_element"
+      );
 
-    // Remove elementos após a inicialização
-    setTimeout(removeGoogleTranslateElements, 1000);
+      // Remove elementos indesejados após inicialização
+      setTimeout(removeGoogleTranslateElements, 1000);
+    }
   };
 
   useEffect(() => {
     if (typeof window !== "undefined") {
+      // Verifica se houve redirecionamento após tradução
+      const redirectPath = sessionStorage.getItem('translationRedirect');
+      if (redirectPath && redirectPath !== window.location.pathname + window.location.search + window.location.hash) {
+        sessionStorage.removeItem('translationRedirect');
+        // Se a rota não bater, redireciona para a rota correta
+        window.history.replaceState(null, '', redirectPath);
+      }
+
       // Remove script anterior se existir
       const existingScript = document.querySelector(
         'script[src*="translate.google.com"]'
@@ -155,41 +144,51 @@ export default function LanguageToggle() {
         existingScript.remove();
       }
 
+      // Carrega o script do Google Translate
       const script = document.createElement("script");
       script.src =
         "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
       script.async = true;
+      script.onerror = () => {
+        console.log("Erro ao carregar Google Translate");
+      };
       document.body.appendChild(script);
+      
+      // Define a função global
       window.googleTranslateElementInit = googleTranslateElementInit;
     }
 
-    // Cleanup function
     return () => {
-      // Remove o script quando o componente for desmontado
       const script = document.querySelector(
         'script[src*="translate.google.com"]'
       );
       if (script) {
         script.remove();
       }
+      if (window.googleTranslateElementInit) {
+        delete window.googleTranslateElementInit;
+      }
     };
   }, []);
 
-  // Observer para remover elementos que aparecem dinamicamente
+  // Observer para remover elementos dinâmicos
   useEffect(() => {
     const observer = new MutationObserver((mutations) => {
       mutations.forEach((mutation) => {
         if (mutation.addedNodes.length > 0) {
           mutation.addedNodes.forEach((node) => {
             if (node.nodeType === Node.ELEMENT_NODE) {
-              // Verifica se é um elemento do Google Translate
               if (
                 node.className && 
                 (node.className.includes('goog-te') || 
                  node.className.includes('skiptranslate') ||
                  node.className.includes('VIpgJd'))
               ) {
-                setTimeout(() => node.remove(), 100);
+                setTimeout(() => {
+                  if (node.parentNode && node.id !== "google_translate_element") {
+                    node.remove();
+                  }
+                }, 100);
               }
             }
           });
@@ -205,22 +204,24 @@ export default function LanguageToggle() {
     return () => observer.disconnect();
   }, []);
 
+  // Pega o idioma atual
   const currentLang = Cookies.get("googtrans");
 
-  // Função para resetar completamente o tradutor
-  const resetTranslator = () => {
-    removeGoogleTranslateElements();
-  };
-
+  // Reset inicial
   useEffect(() => {
-    // Reset do tradutor quando o componente monta
-    resetTranslator();
+    removeGoogleTranslateElements();
     
-    // Adiciona um intervalo para remover elementos que podem aparecer
+    // Limpa elementos periodicamente
     const interval = setInterval(removeGoogleTranslateElements, 2000);
     
     return () => clearInterval(interval);
   }, []);
+
+  // Função para determinar se está no idioma selecionado
+  const isActiveLanguage = (langCode) => {
+    return currentLang === langCode || 
+           (langCode === "/auto/pt" && (!currentLang || currentLang === "null"));
+  };
 
   return (
     <>
@@ -228,47 +229,61 @@ export default function LanguageToggle() {
         <img
           src={brasilFlag}
           alt="Português"
+          title="Português"
           style={{
             width: "35px",
             cursor: "pointer",
             borderRadius: "50%",
-            border: currentLang === "/auto/pt" ? "3px solid green" : "none",
+            border: isActiveLanguage("/auto/pt") ? "3px solid green" : "none",
+            transition: "all 0.3s ease",
           }}
           onClick={(e) => langChange("/auto/pt", e)}
-          onMouseOver={(e) => e.target.style.opacity = "0.8"}
+          onMouseOver={(e) => e.target.style.opacity = "0.7"}
           onMouseOut={(e) => e.target.style.opacity = "1"}
         />
         <img
           src={euaFlag}
           alt="English"
+          title="English"
           style={{
             width: "35px",
             cursor: "pointer",
             borderRadius: "50%",
-            border: currentLang === "/auto/en" ? "3px solid blue" : "none",
+            border: isActiveLanguage("/auto/en") ? "3px solid blue" : "none",
+            transition: "all 0.3s ease",
           }}
           onClick={(e) => langChange("/auto/en", e)}
-          onMouseOver={(e) => e.target.style.opacity = "0.8"}
+          onMouseOver={(e) => e.target.style.opacity = "0.7"}
           onMouseOut={(e) => e.target.style.opacity = "1"}
         />
         <img
           src={espanhaFlag}
           alt="Español"
+          title="Español"
           style={{
             width: "35px",
             cursor: "pointer",
             borderRadius: "50%",
-            border: currentLang === "/auto/es" ? "3px solid yellow" : "none",
+            border: isActiveLanguage("/auto/es") ? "3px solid orange" : "none",
+            transition: "all 0.3s ease",
           }}
           onClick={(e) => langChange("/auto/es", e)}
-          onMouseOver={(e) => e.target.style.opacity = "0.8"}
+          onMouseOver={(e) => e.target.style.opacity = "0.7"}
           onMouseOut={(e) => e.target.style.opacity = "1"}
         />
       </div>
-      <div id="google_translate_element" style={{ display: "none" }}></div>
+      
+      {/* Elemento escondido para o Google Translate */}
+      <div id="google_translate_element" style={{ 
+        display: "none",
+        visibility: "hidden",
+        position: "absolute",
+        top: "-9999px",
+        left: "-9999px"
+      }}></div>
 
       <style jsx global>{`
-        /* Esconde todos os elementos do Google Translate */
+        /* Esconde TODOS os elementos do Google Translate */
         .goog-te-banner-frame,
         .goog-te-banner-frame.skiptranslate,
         .goog-te-ftab,
@@ -281,7 +296,9 @@ export default function LanguageToggle() {
         .goog-tooltip,
         .VIpgJd-ZVi9od-ORHb-OEVmcd,
         .skiptranslate,
-        .goog-te-spinner-pos {
+        .goog-te-spinner-pos,
+        .goog-te-menu-value,
+        .goog-te-menu-frame {
           display: none !important;
           visibility: hidden !important;
           opacity: 0 !important;
@@ -291,53 +308,54 @@ export default function LanguageToggle() {
           position: absolute !important;
           top: -9999px !important;
           left: -9999px !important;
+          z-index: -999999 !important;
         }
 
-        /* Força esconder qualquer elemento do Google Translate */
-        [class*="goog-te"]:not(#google_translate_element) {
+        /* Remove qualquer elemento com classes do Google Translate */
+        [class*="goog-te"]:not(#google_translate_element),
+        [class*="VIpgJd"],
+        [id*="goog-gt-"],
+        [id*=":1."] {
           display: none !important;
           visibility: hidden !important;
         }
 
-        /* Remove qualquer iframe do Google Translate */
-        iframe[src*="translate.google"] {
+        /* Remove iframes */
+        iframe[src*="translate.google"],
+        iframe[src*="translate_a"] {
           display: none !important;
           visibility: hidden !important;
         }
 
-        /* Restaura o body */
+        /* Garante que o body não seja afetado */
         body {
           top: 0px !important;
           position: relative !important;
+          margin-top: 0px !important;
         }
 
-        /* Remove highlight de tradução */
+        /* Remove highlights de tradução */
         .goog-text-highlight {
           background-color: transparent !important;
           background: transparent !important;
           box-shadow: none !important;
         }
 
-        /* Esconde tooltips */
+        /* Remove qualquer tooltip */
         .goog-tooltip,
-        .goog-tooltip:hover {
+        .goog-tooltip:hover,
+        [class*="goog-tooltip"] {
           display: none !important;
         }
 
-        /* Remove qualquer elemento flutuante */
-        .goog-te-ftab-float {
+        /* Remove elementos flutuantes */
+        .goog-te-ftab-float,
+        [style*="position: fixed"][style*="goog"] {
           display: none !important;
         }
 
-        /* Esconde elementos específicos que podem aparecer */
-        div[style*="position: absolute"][style*="z-index"] {
-          display: none !important;
-        }
-
-        /* Força esconder elementos que podem ter IDs dinâmicos */
-        div[id^="goog-gt-"],
-        span[id^="goog-gt-"],
-        iframe[id^="goog-gt-"] {
+        /* Força esconder elementos dinâmicos */
+        div[style*="position: absolute"][style*="z-index"][style*="translate"] {
           display: none !important;
         }
       `}</style>

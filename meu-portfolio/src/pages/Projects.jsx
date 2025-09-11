@@ -50,6 +50,12 @@ import carrosselVertical from '../assets/img/projects/projeto-profissional/carro
 import modal from '../assets/img/projects/projeto-profissional/modal.png';
 import contato from '../assets/img/projects/projeto-profissional/contato.png';
 
+//Google Tradutor 
+import english from '../assets/img/projects/google-tradutor/english.png';
+import spanish from '../assets/img/projects/google-tradutor/spanish.png';
+import github from '../assets/img/projects/google-tradutor/GitHub.png';
+import linkedin from '../assets/img/projects/google-tradutor/LinkedIn.png';
+
 //Cronômetro
 import contVoltas from '../assets/img/projects/cronometro/contVoltas.png';
 import whiteTheme from '../assets/img/projects/cronometro/whiteTheme.png';
@@ -224,6 +230,21 @@ const Projects = () => {
                 { icon: javascriptIcon, name: "JavaScript" },
                 { icon: htmlIcon, name: "HTML" },
                 { icon: cssIcon, name: "CSS" }
+            ]
+        },
+        {
+            id: 9,
+            name: "Tradutor automático com API Google Tradutor",
+            description: "Desenvolvi um template completo e gratuito de tradutor automático usando a API do Google Tradutor. Além de utilizar em meus projetos, disponibilizo para que outros desenvolvedores também possam aprender e aplicar facilmente.",
+            images: [linkedin, github, english, spanish], 
+            vercelLink: "https://www.linkedin.com/feed/update/urn:li:activity:7354140924278431744/",
+            githubLink: "https://github.com/vinizanotti89/TemplateGoogleTradutor",
+            //youtubeLink: "https://youtube.com/watch?v=seuVideo3",
+            difficulties: "O projeto nasceu de uma demanda profissional e inicialmente foi feito em React. Mas pensando em colegas que ainda não dominam a tecnologia, criei também uma versão em JavaScript puro, garantindo acessibilidade para todos os níveis de experiência.",
+            solutions: "Um tradutor automático pode trazer valor a praticamente qualquer aplicação. Por isso, construí um template simples, funcional e gratuito, pronto para ser adaptado em qualquer projeto, ajudando tanto no aprendizado quanto na prática.",
+            stack: [
+                { icon: reactIcon, name: "React" },
+                { icon: javascriptIcon, name: "JavaScript" },
             ]
         },
         {
