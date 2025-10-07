@@ -9,13 +9,19 @@ import '../styles/pages/Projects.css';
 import javascriptIcon from '../assets/img/skills/js.png';
 import htmlIcon from '../assets/img/skills/html.png';
 import cssIcon from '../assets/img/skills/css.png';
+import typescriptIcon from '../assets/img/skills/typescript.png';
+import tailwindIcon from '../assets/img/skills/tailwind.png';
+import styledComponentsIcon from '../assets/img/skills/styled-components.png';
 
 // Frameworks
 import reactIcon from '../assets/img/skills/react.png';
 import nodejsIcon from '../assets/img/skills/nodejs.png';
+import nodeExpressIcon from '../assets/img/skills/node+express.png';
 
 // Databases
 import mongodbIcon from '../assets/img/skills/mongodb.png';
+import mysqlIcon from '../assets/img/skills/mysql.png';
+import postgreIcon from '../assets/img/skills/postgre.png';
 
 // DevOps & Ferramentas
 import viteIcon from '../assets/img/skills/vite.png';
@@ -24,7 +30,33 @@ import vercelIcon from '../assets/img/skills/vercel.png';
 import prismaIcon from '../assets/img/skills/prisma.png';
 import renderIcon from '../assets/img/skills/render.png';
 
+// Tecnologias adicionais
+import git from '../assets/img/skills/git.png';
+import github from '../assets/img/skills/github.png';
+import cicd from '../assets/img/skills/ci-cd.png';
+import jwtauth from '../assets/img/skills/jwtauth.png';
+import rbac from '../assets/img/skills/rbac.png';
+import stripe from '../assets/img/skills/stripe.png';
+import axios from '../assets/img/skills/axios.png';
+
 //Imagens de projetos
+
+//E-Commerce Full Stack - Fake Store
+import HomeFake from '../assets/img/projects/fake-store/HomeFake.png';
+import CadastroFake from '../assets/img/projects/fake-store/CadastroFake.png';
+import LoginFake from '../assets/img/projects/fake-store/LoginFake.png';
+import MinhasComprasFake from '../assets/img/projects/fake-store/MinhasComprasFake.png';
+import SenhaFake from '../assets/img/projects/fake-store/SenhaFake.png';
+import Category2Fake from '../assets/img/projects/fake-store/Category2Fake.png';
+import Category3Fake from '../assets/img/projects/fake-store/Category3Fake.png';
+import ContatosFake from '../assets/img/projects/fake-store/ContatosFake.png';
+
+//Nexxland
+import HomeNexx from '../assets/img/projects/nexxland/HomeNexx.png';
+import TerrenosNexx from '../assets/img/projects/nexxland/TerrenosNexx.png';
+import Formulario1Nexx from '../assets/img/projects/nexxland/Formulario1Nexx.png';
+import Formulario2Nexx from '../assets/img/projects/nexxland/Formulario2Nexx.png';
+
 
 //Painel Influenciadores
 import Dashboard from '../assets/img/projects/painel-influenciadores/Dashboard.png';
@@ -53,7 +85,7 @@ import contato from '../assets/img/projects/projeto-profissional/contato.png';
 //Google Tradutor 
 import english from '../assets/img/projects/google-tradutor/english.png';
 import spanish from '../assets/img/projects/google-tradutor/spanish.png';
-import github from '../assets/img/projects/google-tradutor/GitHub.png';
+import githubtradutor from '../assets/img/projects/google-tradutor/GitHub.png';
 import linkedin from '../assets/img/projects/google-tradutor/LinkedIn.png';
 
 //Cronômetro
@@ -157,6 +189,58 @@ const Projects = () => {
     // Dados dos projetos
     const projects = [
         {
+            id: 11,
+            name: "E-Commerce Full Stack - Fake Store",
+            description: "Criei um e-commerce full stack totalmente original com produtos fictícios voltados para o universo DEV, com nomes, descrições e imagens geradas por IA. Um projeto 100% autoral e fora do comum, que une criatividade, tecnologia e simulação de vendas reais.",
+            images: [HomeFake, CadastroFake, LoginFake, MinhasComprasFake, SenhaFake, Category2Fake, Category3Fake, ContatosFake], 
+            vercelLink: "https://fake-store-front-end-smoky.vercel.app/",
+            githubLink1: "https://github.com/vinizanotti89/FakeStore-Front-End",
+            githubLink2: "https://github.com/vinizanotti89/FakeStore-BackEnd",
+            // youtubeLink: "https://youtu.be/hNf1EHZBeeg",
+            difficulties: "Como os produtos não existem, precisei imaginar cada um do zero e gerar imagens únicas com inteligência artificial, além de estruturar uma arquitetura robusta com autenticação, controle de acesso, recuperação de senha e integração com pagamento fictício.",
+            solutions: "Utilizei PostgreSQL para usuários, categorias e produtos, e MongoDB para o histórico de compras visando melhor desempenho. Backend em Node.js com autenticação JWT e RBAC via middlewares, e frontend em React com Vite e Styled-Components. O projeto conta com carrinho, fluxo de compra, simulação de pagamento via Stripe e foi hospedado na Vercel com banco de dados na Render e Atlas.",
+            stack: [
+                { icon: reactIcon, name: "React" },
+                { icon: javascriptIcon, name: "JavaScript" },
+                { icon: styledComponentsIcon, name: "Styled-Components" },
+                { icon: nodeExpressIcon, name: "Node.js + Express" },
+                { icon: postgreIcon, name: "PostgreSQL" },
+                { icon: mongodbIcon, name: "MongoDB" },
+                { icon: viteIcon, name: "Vite" },
+                { icon: vercelIcon, name: "Vercel" },
+                { icon: dockerIcon, name: "Docker" },
+                { icon: cicd, name: "CI/CD" },
+                { icon: jwtauth, name: "JWT Auth" },
+                { icon: rbac, name: "RBAC" },
+                { icon: stripe, name: "Stripe" },
+                { icon: git, name: "Git" },
+                { icon: github, name: "GitHub" },
+                { icon: axios, name: "Axios" },
+            ]
+        },
+        {
+            id: 10,
+            name: "Nexxland ",
+            description: "Desenvolver um site institucional responsivo para a empresa Nexxland, especializada em investimentos em terrenos nos Estados Unidos.",
+            images: [HomeNexx, TerrenosNexx, Formulario1Nexx, Formulario2Nexx], 
+            vercelLink: "https://www.nexxland.com.br/",
+            githubLink1: "https://github.com/vinizanotti89/NexxtLand-frontend",
+            // youtubeLink: "https://youtu.be/hNf1EHZBeeg",
+            difficulties: "Implementar site multi-idiomas, criar formulários funcionais com envio de dados e integrar com banco de dados MySQL gerando relatórios automáticos.",
+            solutions: "Utilizei TypeScript, Tailwind e React para criar o site, com formulários controlados via useState e integração com banco MySQL hospedado na HostGator.",
+            stack: [
+                { icon: typescriptIcon, name: "TypeScript" },
+                { icon: javascriptIcon, name: "JavaScript" },
+                { icon: reactIcon, name: "React" },
+                { icon: tailwindIcon, name: "Tailwind" },
+                { icon: mysqlIcon, name: "MySQL" },
+                { icon: cicd, name: "CI/CD" },
+                { icon: git, name: "Git" },
+                { icon: github, name: "GitHub" },
+            ]
+        },
+
+        {
             id: 1,
             name: "Full Stack Painel Influenciadores",
             description: "Desenvolver uma plataforma completo que permitisse pesquisar e analisar influenciadores médicos com base em critérios de confiabilidade, número de seguidores, curtidas e quantidade de vídeos",
@@ -175,7 +259,11 @@ const Projects = () => {
                 { icon: mongodbIcon, name: "MongoDB" },
                 { icon: viteIcon, name: "Vite" },
                 { icon: vercelIcon, name: "Vercel" },
-                { icon: dockerIcon, name: "Docker" }
+                { icon: dockerIcon, name: "Docker" },
+                { icon: cicd, name: "CI/CD" },
+                { icon: git, name: "Git" },
+                { icon: github, name: "GitHub" },
+                { icon: axios, name: "Axios" },
             ]
         },
         {
@@ -197,7 +285,11 @@ const Projects = () => {
                 { icon: viteIcon, name: "Vite" },
                 { icon: vercelIcon, name: "Vercel" },
                 { icon: prismaIcon, name: "Prisma" },
-                { icon: renderIcon, name: "Render" }
+                { icon: renderIcon, name: "Render" },
+                { icon: cicd, name: "CI/CD" },
+                { icon: git, name: "Git" },
+                { icon: github, name: "GitHub" },
+                { icon: axios, name: "Axios" },
             ]
         },
         {
@@ -220,7 +312,7 @@ const Projects = () => {
             id: 9,
             name: "Tradutor automático com API Google Tradutor",
             description: "Desenvolvi um template completo e gratuito de tradutor automático usando a API do Google Tradutor. Além de utilizar em meus projetos, disponibilizo para que outros desenvolvedores também possam aprender e aplicar facilmente.",
-            images: [linkedin, github, english, spanish], 
+            images: [linkedin, githubtradutor, english, spanish], 
             vercelLink: "https://www.linkedin.com/feed/update/urn:li:activity:7354140924278431744/",
             githubLink: "https://github.com/vinizanotti89/TemplateGoogleTradutor",
             //youtubeLink: "https://youtube.com/watch?v=seuVideo3",
@@ -298,7 +390,7 @@ const Projects = () => {
         {
             id: 8,
             name: "Conversor de Moedas",
-            description: "O Projeto Que Me Fez Acreditar Que Eu Podia Ser Dev",
+            description: "O Projeto Que Me Fez Acreditar Que Eu Poderia Ser Dev",
             images: [dolar, euro, librasEsterlinas, yene, real], 
             vercelLink: "https://conversordemoedas-seven.vercel.app/",
             githubLink: "https://github.com/vinizanotti89/conversordemoedas",
